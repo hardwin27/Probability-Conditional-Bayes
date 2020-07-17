@@ -3,6 +3,9 @@ from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5 import Qt
 from Probably import Ui_MainWindow as MainUi
 
+from decimal import getcontext, Decimal
+getcontext().prec = 2
+
 class App(QtWidgets.QMainWindow, MainUi):
     def __init__(self, parent=None):
         QtWidgets.QMainWindow.__init__(self, parent=parent)
@@ -64,8 +67,8 @@ class App(QtWidgets.QMainWindow, MainUi):
         asked_param = self.probability_combo_asked_param.currentIndex()
         result = 0.0
         try:
-            param1 = float(self.line_param_probability_1.text())
-            param2 = float(self.line_param_probability_2.text())
+            param1 = Decimal(self.line_param_probability_1.text())
+            param2 = Decimal(self.line_param_probability_2.text())
             if asked_param == 0:
                 self.lbl_result_probability.setText("Error: Asked parameter not slected yet")
             else:
@@ -80,15 +83,15 @@ class App(QtWidgets.QMainWindow, MainUi):
                     result = param1 / param2
 
                 self.lbl_result_probability.setText(str(result))
-        except ValueError:
+        except:
             self.lbl_result_probability.setText("Error: Some input not valid")
     
     def calculate_cond(self):
         asked_param = self.conditional_combo_asked_param.currentIndex()
         result = 0.0
         try:
-            param1 = float(self.line_param_conditional_1.text())
-            param2 = float(self.line_param_conditional_2.text())
+            param1 = Decimal(self.line_param_conditional_1.text())
+            param2 = Decimal(self.line_param_conditional_2.text())
             if asked_param == 0:
                 self.lbl_result_conditional.setText("Error: Asked parameter not slected yet")
             else:
@@ -103,16 +106,16 @@ class App(QtWidgets.QMainWindow, MainUi):
                     result = param1 / param2
 
                 self.lbl_result_conditional.setText(str(result))
-        except ValueError:
+        except:
             self.lbl_result_conditional.setText("Error: Some input not valid")
 
     def calculate_bay(self):
         asked_param = self.bayes_combo_asked_param.currentIndex()
         result = 0.0
         try:
-            param1 = float(self.line_param_bayes_1.text())
-            param2 = float(self.line_param_bayes_2.text())
-            param3 = float(self.line_param_bayes_3.text())
+            param1 = Decimal(self.line_param_bayes_1.text())
+            param2 = Decimal(self.line_param_bayes_2.text())
+            param3 = Decimal(self.line_param_bayes_3.text())
             if asked_param == 0:
                 self.lbl_result_bayes.setText("Error: Asked parameter not slected yet")
             else:
@@ -130,7 +133,7 @@ class App(QtWidgets.QMainWindow, MainUi):
                     result = param3 * param2 / param1
 
                 self.lbl_result_bayes.setText(str(result))
-        except ValueError:
+        except:
             self.lbl_result_bayes.setText("Error: Some input not valid")
 
 if __name__ == "__main__":
