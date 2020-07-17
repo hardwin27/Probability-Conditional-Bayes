@@ -67,7 +67,7 @@ class App(QtWidgets.QMainWindow, MainUi):
             param1 = float(self.line_param_probability_1.text())
             param2 = float(self.line_param_probability_2.text())
             if asked_param == 0:
-                self.lbl_result.setText("Error: Asked parameter not slected yet")
+                self.lbl_result_probability.setText("Error: Asked parameter not slected yet")
             else:
                 if asked_param == 1:
                     #result = Number of A / Total Outcomes
@@ -90,7 +90,7 @@ class App(QtWidgets.QMainWindow, MainUi):
             param1 = float(self.line_param_conditional_1.text())
             param2 = float(self.line_param_conditional_2.text())
             if asked_param == 0:
-                self.lbl_result.setText("Error: Asked parameter not slected yet")
+                self.lbl_result_conditional.setText("Error: Asked parameter not slected yet")
             else:
                 if asked_param == 1:
                     #result = P(A n B) / P(B)
@@ -104,7 +104,7 @@ class App(QtWidgets.QMainWindow, MainUi):
 
                 self.lbl_result_conditional.setText(str(result))
         except ValueError:
-            self.lbl_result_probability.setText("Error: Some input not valid")
+            self.lbl_result_conditional.setText("Error: Some input not valid")
 
     def calculate_bay(self):
         asked_param = self.bayes_combo_asked_param.currentIndex()
