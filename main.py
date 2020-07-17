@@ -75,7 +75,7 @@ class App(QtWidgets.QMainWindow, MainUi):
                 elif asked_param == 2:
                     #result = P(A) * Total Outcomes
                     result = param1 * param2
-                elif asked_param == 1:
+                elif asked_param == 3:
                     #result = Number of A / P(A)
                     result = param1 / param2
 
@@ -98,7 +98,7 @@ class App(QtWidgets.QMainWindow, MainUi):
                 elif asked_param == 2:
                     #result = P(A|B) * P(B)
                     result = param1 * param2
-                elif asked_param == 1:
+                elif asked_param == 3:
                     #result = P(A n B) / P(A|B)
                     result = param1 / param2
 
